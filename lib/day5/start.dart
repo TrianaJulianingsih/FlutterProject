@@ -40,6 +40,7 @@ class StartWidget extends StatelessWidget {
         spacing: 10,
         children: [
           //Warna Standar Flutter (MEJIKUHIBINIU)
+      
           Text(
             "Triana Julianingsih", 
             style: TextStyle(

@@ -48,9 +48,10 @@ class TugasDua extends StatelessWidget {
               ),
           ), 
           Padding(
-            padding: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(15),
+          
             child: Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 254, 114, 83),
                 border: Border.all(color: const Color.fromARGB(255, 248, 236, 6), width: 2),
@@ -59,7 +60,10 @@ class TugasDua extends StatelessWidget {
               child: Row(
                 children: [
                   Icon(Icons.email),
+
                   Spacer(),
+
+                  SizedBox(width: 173),
                   Text("triana1@gmail.com ", 
                     style: TextStyle(
                       fontFamily: "Roboto_Regular",
@@ -67,50 +71,54 @@ class TugasDua extends StatelessWidget {
                       fontSize: 16
                     ),
                   ),
+
                   
                 ],
                 
               ),
               
-            ),
             
+            
+          ),
           ), 
           Padding(
             padding: const EdgeInsets.all(5),
+            // child: Container(
+            // padding: const EdgeInsets.all(15),
             child: Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 254, 114, 83),
                   border: Border.all(color: const Color.fromARGB(255, 248, 236, 6), width: 2),
                   borderRadius: BorderRadius.circular(8)
                 ),
-              child: Row(
-                children: [
-                  Icon(Icons.telegram),
-                  Spacer(),
-                  Text("0812-3456-7890",
-                    style: TextStyle(
-                      fontSize: 16
+                child: Row(
+                  children: [
+                    Icon(Icons.telegram),
+                    Spacer(),
+                    Text("0812-3456-7890",
+                      style: TextStyle(
+                        fontSize: 16
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(5),
             child: Expanded(
-    
               child: Row(
                 children: [
-                  Expanded(
-                    
+                  Expanded( 
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: const Color.fromARGB(255, 213, 100, 247),
                       ),
+                      // padding: const EdgeInsets.all(15),
+                      color: const Color.fromARGB(255, 213, 100, 247),
                       child: Center( 
                         child: 
                           Text("Postingan",
@@ -129,6 +137,9 @@ class TugasDua extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                           color: const Color.fromARGB(255, 18, 130, 234),
                         ),
+
+                        // padding: const EdgeInsets.all(15),
+                        color: const Color.fromARGB(255, 18, 130, 234),
                       child: Center(
                         child:
                             Text("Followers",

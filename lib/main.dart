@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 // import 'package:ppkd_flutter_1/day6/tugas_2.dart';
 // import 'package:ppkd_flutter_1/day7/tugas_3.dart';
 // import 'package:ppkd_flutter_1/day7/tugas_4.dart';
-import 'package:ppkd_flutter_1/day8/tugas_5.dart';
+// import 'package:ppkd_flutter_1/day8/tugas_5.dart';
+import 'package:ppkd_flutter_1/day9/tugas_6.dart';
+
+// import 'package:ppkd_flutter_1/coba/cobaFlutter.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: TugasLima(),
+      home: TugasEnam(),
     );
   }
 }

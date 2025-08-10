@@ -185,6 +185,9 @@ class _MyWidgetState extends State<TugasEnam> {
                           //   SnackBar(content: Text("Form Validasi Berhasil")),
                           // );
                           context.pushNamed(Home.id);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Form Validasi Berhasil")),
+                          );
                         } else {
                           showDialog(
                             context: context,

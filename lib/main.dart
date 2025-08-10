@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:ppkd_flutter_1/day5/start.dart';
-// import 'package:ppkd_flutter_1/day6/tugas_2.dart';
-// import 'package:ppkd_flutter_1/day7/tugas_3.dart';
-// import 'package:ppkd_flutter_1/day7/tugas_4.dart';
-import 'package:ppkd_flutter_1/day8/tugas_5.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ppkd_flutter_1/day10/datepicker.dart';
+import 'package:ppkd_flutter_1/day10/tugas_7.dart';
+import 'package:ppkd_flutter_1/day9/tugas_6.dart';
+
+// import 'package:ppkd_flutter_1/coba/cobaFlutter.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -15,7 +16,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('id', 'ID'),
+      ],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -34,7 +45,16 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: TugasLima(),
+      home: TugasEnam(),
+      routes: {
+        // '/': (context) => const Start(),
+        // '/tugas2': (context) => const TugasDua(),
+        // '/tugas3': (context) => const TugasTiga(),
+        // '/tugas4': (context) => const TugasEmpat(),
+        // '/tugas5': (context) => const TugasLima(),
+        '/home': (context) => const Home(),
+        // '/cobaFlutter': (context) => const TugasEnam(),
+      },
     );
   }
 }

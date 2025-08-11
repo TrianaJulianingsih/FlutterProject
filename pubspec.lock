@@ -121,10 +121,17 @@ packages:
     dependency: transitive
     description:
       name: http
+<<<<<<< HEAD
+      sha256: bb2ce4590bc2667c96f318d68cac1b5a7987ec819351d32b1c987239a815e007
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.0"
+=======
       sha256: "2c11f3f94c687ee9bad77c171151672986360b2b001d109814ee7140b2cf261b"
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+>>>>>>> 4b8b200f6554d3309828fe0163aa3a99ba3dc978
   http_parser:
     dependency: transitive
     description:
@@ -133,6 +140,10 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f8cbbbf1a7b6887141205db5faa41970bf1e5ad0
   intl:
     dependency: "direct main"
     description:
@@ -141,6 +152,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.2"
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 4b8b200f6554d3309828fe0163aa3a99ba3dc978
+>>>>>>> f8cbbbf1a7b6887141205db5faa41970bf1e5ad0
   leak_tracker:
     dependency: transitive
     description:

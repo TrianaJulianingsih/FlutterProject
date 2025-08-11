@@ -33,7 +33,6 @@ class _DropdownState extends State<DropdownPage> {
                 setState(() {
                   dropdownSelect = value;
                 });
-
                 // if (dropdownSelect != null) {
                 //   ScaffoldMessenger.of(context).showSnackBar(
                 //     SnackBar(
@@ -49,9 +48,16 @@ class _DropdownState extends State<DropdownPage> {
                   : "Anda memilih kategori: $dropdownSelect",
               style: const TextStyle(fontSize: 16),
             ),
+                dropdownSelect == null
+                    ? "Belum ada kategori yang dipilih"
+                    : "Anda memilih kategori: $dropdownSelect",
+                style: const TextStyle(fontSize: 16),
+              ),
           ],
         ),
       ),
     );
   }
+
 }
+

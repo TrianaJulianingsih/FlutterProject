@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 import 'package:ppkd_flutter_1/day10/tugas_8.dart';
+import 'package:ppkd_flutter_1/day10/datepicker.dart';
+import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 // import 'package:ppkd_flutter_1/day5/start.dart';
 // import 'package:ppkd_flutter_1/day6/tugas_2.dart';
 // import 'package:ppkd_flutter_1/day7/tugas_3.dart';
@@ -29,6 +31,10 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [Locale('en', 'US'), Locale('id', 'ID')],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('id', 'ID'),
+      ],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -55,6 +61,7 @@ class MyApp extends StatelessWidget {
         // '/tugas4': (context) => const TugasEmpat(),
         // '/tugas5': (context) => const TugasLima(),
         '/home': (context) => const Home(),
+
         '/tugasDelapan': (context) => const TugasDelapan(),
         // '/cobaFlutter': (context) => const TugasEnam(),
       },

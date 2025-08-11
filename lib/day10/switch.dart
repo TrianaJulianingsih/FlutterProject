@@ -21,7 +21,6 @@ class _SwitchState extends State<SwitchPage> {
             : const Color.fromARGB(255, 200, 206, 255),
         child: Center(
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Aktifkan Mode Gelap"),
               Switch(
@@ -37,6 +36,7 @@ class _SwitchState extends State<SwitchPage> {
                 isCheckSwitch == true
                     ? "Mode Gelap Aktif"
                     : "Mode Terang Aktif",
+                isCheckSwitch == true ? "Mode Gelap Aktif" : "Mode Terang Aktif",
               ),
             ],
           ),
@@ -45,3 +45,4 @@ class _SwitchState extends State<SwitchPage> {
     );
   }
 }
+

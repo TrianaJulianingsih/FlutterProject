@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ppkd_flutter_1/day10/tugas_8.dart';
+import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class TugasEnam extends StatefulWidget {
   const TugasEnam({super.key});
@@ -179,8 +181,15 @@ class _MyWidgetState extends State<TugasEnam> {
                       onPressed: () {
                         //Error dan sukses menggunakan ScaffoldMessenger dan formKey
                         if (_formKey.currentState!.validate()) {
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   SnackBar(content: Text("Form Validasi Berhasil")),
+                          // );
+                          context.pushReplacement(TugasDelapan());
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Form Validasi Berhasil")),
+                            SnackBar(
+                              content: Text("Form Validasi Berhasil"),
+                              duration: Duration(microseconds: 2),
+                            ),
                           );
                         } else {
                           showDialog(

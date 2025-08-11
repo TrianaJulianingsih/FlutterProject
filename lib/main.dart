@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ppkd_flutter_1/day10/tugas_7.dart';
+import 'package:ppkd_flutter_1/day10/tugas_8.dart';
 // import 'package:ppkd_flutter_1/day5/start.dart';
 // import 'package:ppkd_flutter_1/day6/tugas_2.dart';
 // import 'package:ppkd_flutter_1/day7/tugas_3.dart';
@@ -18,7 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('en', 'US'), Locale('id', 'ID')],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -38,6 +48,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: TugasEnam(),
+      routes: {
+        // '/': (context) => const Start(),
+        // '/tugas2': (context) => const TugasDua(),
+        // '/tugas3': (context) => const TugasTiga(),
+        // '/tugas4': (context) => const TugasEmpat(),
+        // '/tugas5': (context) => const TugasLima(),
+        '/home': (context) => const Home(),
+        '/tugasDelapan': (context) => const TugasDelapan(),
+        // '/cobaFlutter': (context) => const TugasEnam(),
+      },
     );
   }
 }

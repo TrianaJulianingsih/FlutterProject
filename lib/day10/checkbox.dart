@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_flutter_1/day10/drawer.dart';
 
-
 class CheckBoxPage extends StatefulWidget {
   const CheckBoxPage({super.key, this.appBar});
   final bool? appBar;
@@ -20,13 +19,10 @@ class _CheckBoxState extends State<CheckBoxPage> {
         backgroundColor: Colors.blue,
       ),
       drawer: DrawerMenu(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text("Saya menyetujui semua persyaratan yang berlaku"),
           Row(
             children: [
               Checkbox(
@@ -50,17 +46,8 @@ class _CheckBoxState extends State<CheckBoxPage> {
                   : "Anda belum bisa melanjutkan",
             ),
           ),
-              Text(
-                isCheck == true
-                    ? "Lanjutkan pendaftaran diperbolehkan"
-                    : "Anda belum bisa melanjutkan",
-              ),
-            ],
-          ),
         ],
       ),
     );
   }
 }
-
-

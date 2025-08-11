@@ -36,7 +36,6 @@ class _SwitchState extends State<SwitchPage> {
                 isCheckSwitch == true
                     ? "Mode Gelap Aktif"
                     : "Mode Terang Aktif",
-                isCheckSwitch == true ? "Mode Gelap Aktif" : "Mode Terang Aktif",
               ),
             ],
           ),
@@ -45,4 +44,3 @@ class _SwitchState extends State<SwitchPage> {
     );
   }
 }
-

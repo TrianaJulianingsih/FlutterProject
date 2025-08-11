@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:ppkd_flutter_1/day10/tugas_7.dart';
+import 'package:ppkd_flutter_1/day10/tugas_8.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class TugasEnam extends StatefulWidget {

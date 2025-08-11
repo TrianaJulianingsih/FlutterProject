@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_flutter_1/day10/drawer.dart';
-import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,24 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class _TugasTujuhState extends State<Home> {
-  bool isCheck = false;
-  bool isCheckSwitch = false;
-  int _selectedIndexDrawer = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    SizedBox(),
-    CheckBoxPage(appBar: false),
-    SwitchPage(),
-    DropdownPage(),
-    DatepickerPage(),
-    TimepickerPage(),
-  ];
-  void onItemTap(int index) {
-    setState(() {
-      _selectedIndexDrawer = index;
-    });
-    context.pop();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,4 +88,3 @@ class _AboutState extends State<About> {
     );
   }
 }
-

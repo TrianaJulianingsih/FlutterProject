@@ -48,16 +48,9 @@ class _DropdownState extends State<DropdownPage> {
                   : "Anda memilih kategori: $dropdownSelect",
               style: const TextStyle(fontSize: 16),
             ),
-                dropdownSelect == null
-                    ? "Belum ada kategori yang dipilih"
-                    : "Anda memilih kategori: $dropdownSelect",
-                style: const TextStyle(fontSize: 16),
-              ),
           ],
         ),
       ),
     );
   }
-
 }
-

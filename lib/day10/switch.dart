@@ -24,6 +24,7 @@ class _SwitchState extends State<SwitchPage> {
             children: [
               Text("Aktifkan Mode Gelap"),
               Switch(
+                activeThumbImage: AssetImage("assets/images/jiso.jpg"),
                 activeColor: Colors.red,
                 value: isCheckSwitch,
                 onChanged: (value) {

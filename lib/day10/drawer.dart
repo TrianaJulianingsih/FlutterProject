@@ -5,6 +5,9 @@ import 'package:ppkd_flutter_1/day10/dropdown.dart';
 import 'package:ppkd_flutter_1/day10/switch.dart';
 import 'package:ppkd_flutter_1/day10/timepicker.dart';
 import 'package:ppkd_flutter_1/day10/tugas_8.dart';
+import 'package:ppkd_flutter_1/day14/list.dart';
+import 'package:ppkd_flutter_1/day14/list_map.dart';
+import 'package:ppkd_flutter_1/day14/model.dart';
 // import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
@@ -24,6 +27,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
     DropdownPage(),
     DatepickerPage(),
     TimepickerPage(),
+    ListVoucher(),
   ];
   void onItemTap(int index) {
     setState(() {
@@ -40,16 +44,18 @@ class _DrawerMenuState extends State<DrawerMenu> {
           DrawerHeader(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/background.jpg'),
+                image: AssetImage('assets/images/peta.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
             child: Text(
-              'Notery',
+              'Travel',
+              textAlign: TextAlign.center,
               style: TextStyle(
-                color: const Color.fromARGB(255, 1, 1, 244),
-                fontSize: 24,
+                color: const Color.fromARGB(255, 6, 6, 6),
+                fontSize: 30,
                 fontFamily: "Lobster",
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -93,6 +99,27 @@ class _DrawerMenuState extends State<DrawerMenu> {
             title: Text("Atur Pengingat"),
             onTap: () {
               context.push(TimepickerPage());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.list_outlined),
+            title: Text("List Voucher And Ticket"),
+            onTap: () {
+              context.push(ListVoucher());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.list_alt_outlined),
+            title: Text("List Map Voucher And Ticket"),
+            onTap: () {
+              context.push(ListMap());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.model_training_outlined),
+            title: Text("Model"),
+            onTap: () {
+              context.push(Model());
             },
           ),
         ],

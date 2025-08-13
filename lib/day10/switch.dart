@@ -22,9 +22,15 @@ class _SwitchState extends State<SwitchPage> {
         child: Center(
           child: Column(
             children: [
-              Text("Aktifkan Mode Gelap"),
+              Text(
+                "Aktifkan Mode Gelap",
+                style: TextStyle(
+                  color: isCheckSwitch == true ? Colors.white : Colors.black,
+                ),
+              ),
               Switch(
                 activeThumbImage: AssetImage("assets/images/jiso.jpg"),
+                inactiveThumbImage: AssetImage("assets/images/jiso.jpg"),
                 activeColor: Colors.red,
                 value: isCheckSwitch,
                 onChanged: (value) {
@@ -37,6 +43,10 @@ class _SwitchState extends State<SwitchPage> {
                 isCheckSwitch == true
                     ? "Mode Gelap Aktif"
                     : "Mode Terang Aktif",
+                style: TextStyle(
+                  color: isCheckSwitch == true ? Colors.white : Colors.black,
+                  fontSize: 20,
+                ),
               ),
             ],
           ),

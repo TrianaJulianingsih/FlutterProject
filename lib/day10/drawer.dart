@@ -8,6 +8,7 @@ import 'package:ppkd_flutter_1/day10/tugas_8.dart';
 import 'package:ppkd_flutter_1/day14/list.dart';
 import 'package:ppkd_flutter_1/day14/list_map.dart';
 import 'package:ppkd_flutter_1/day14/model.dart';
+import 'package:ppkd_flutter_1/day15/daftar_kelas.dart';
 // import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
@@ -20,20 +21,20 @@ class DrawerMenu extends StatefulWidget {
 
 class _DrawerMenuState extends State<DrawerMenu> {
   int _selectedIndexDrawer = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    SizedBox(),
-    CheckBoxPage(),
-    SwitchPage(),
-    DropdownPage(),
-    DatepickerPage(),
-    TimepickerPage(),
-    ListVoucher(),
-  ];
+  // static const List<Widget> _widgetOptions = <Widget>[
+  //   SizedBox(),
+  //   CheckBoxPage(),
+  //   SwitchPage(),
+  //   DropdownPage(),
+  //   DatepickerPage(),
+  //   TimepickerPage(),
+  //   ListVoucher(),
+  // ];
   void onItemTap(int index) {
     setState(() {
       _selectedIndexDrawer = index;
     });
-    // context.pop();
+    context.pop();
   }
 
   @override
@@ -120,6 +121,13 @@ class _DrawerMenuState extends State<DrawerMenu> {
             title: Text("Model"),
             onTap: () {
               context.push(Model());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.app_registration),
+            title: Text("Pendaftaran Kelas"),
+            onTap: () {
+              context.push(DaftarKelas());
             },
           ),
         ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 import 'package:ppkd_flutter_1/day10/tugas_8.dart';
+import 'package:ppkd_flutter_1/day16/views/splash_screen.dart';
 import 'package:ppkd_flutter_1/day9/tugas_6.dart';
 // import 'package:ppkd_flutter_1/day14/tugas_9.dart';
 
@@ -43,16 +44,19 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: TugasEnam(),
+      home: SplashScreen(),
       routes: {
         // '/': (context) => const Start(),
         // '/tugas2': (context) => const TugasDua(),
         // '/tugas3': (context) => const TugasTiga(),
         // '/tugas4': (context) => const TugasEmpat(),
         // '/tugas5': (context) => const TugasLima(),
-        '/home': (context) => const Home(),
-
-        '/tugasDelapan': (context) => const TugasDelapan(),
+        // '/home': (context) => const Home(),
+        Home.id: (context) => Home(),
+        TugasDelapan.id: (context) => TugasDelapan(),
+        TugasEnam.id: (context) => TugasEnam(),
+        // '/tugasDelapan': (context) => const TugasDelapan(),
+        // '/login': (context) => const TugasEnam(),
         // '/cobaFlutter': (context) => const TugasEnam(),
       },
     );

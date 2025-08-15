@@ -3,6 +3,7 @@ import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 
 class TugasDelapan extends StatefulWidget {
   const TugasDelapan({super.key});
+  static const id = "/tugasDelapan";
 
   @override
   State<TugasDelapan> createState() => _TugasDelapanState();

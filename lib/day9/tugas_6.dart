@@ -1,18 +1,45 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:ppkd_flutter_1/day10/tugas_8.dart';
+import 'package:ppkd_flutter_1/day10/tugas_7.dart';
+import 'package:ppkd_flutter_1/day16/preference/login.dart';
+import 'package:ppkd_flutter_1/day16/sqflite/db_helper.dart';
+import 'package:ppkd_flutter_1/day16/views/register_screen.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class TugasEnam extends StatefulWidget {
   const TugasEnam({super.key});
+  static const id = "/login";
 
   @override
   State<TugasEnam> createState() => _MyWidgetState();
 }
 
 class _MyWidgetState extends State<TugasEnam> {
-  final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  // final _formKey = GlobalKey<FormState>();
+  Future<void> login() async {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+    if (email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Email dan Password tidak boleh kosong")),
+      );
+      // isLoading = false;
+
+      return;
+    }
+    final userData = await DbHelper.loginUser(email, password);
+    if (userData != null) {
+      PreferenceHandler.saveLogin();
+      context.pushReplacementNamed(Home.id);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Email atau Password salah")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +47,7 @@ class _MyWidgetState extends State<TugasEnam> {
 
       // ),
       body: Form(
-        key: _formKey,
+        // key: _formKey,
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
@@ -90,6 +117,7 @@ class _MyWidgetState extends State<TugasEnam> {
                     child: Column(
                       children: [
                         TextFormField(
+                          controller: emailController,
                           decoration: InputDecoration(
                             hint: Text(
                               "Your Email/id",
@@ -128,6 +156,7 @@ class _MyWidgetState extends State<TugasEnam> {
                           color: const Color.fromARGB(71, 152, 152, 161),
                         ),
                         TextFormField(
+                          controller: passwordController,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top: 10),
                             prefixIcon: Transform.translate(
@@ -179,61 +208,62 @@ class _MyWidgetState extends State<TugasEnam> {
                     width: 327,
                     child: ElevatedButton(
                       onPressed: () {
+                        login();
                         //Error dan sukses menggunakan ScaffoldMessenger dan formKey
-                        if (_formKey.currentState!.validate()) {
-                          // ScaffoldMessenger.of(context).showSnackBar(
-                          //   SnackBar(content: Text("Form Validasi Berhasil")),
-                          // );
-                          context.pushReplacement(TugasDelapan());
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text("Form Validasi Berhasil"),
-                              duration: Duration(microseconds: 2),
-                            ),
-                          );
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text("Login failed"),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text("Email or password is invalid"),
-                                    SizedBox(height: 20),
-                                    // Image.asset(
-                                    //   'assets/images/rendang.jpeg',
-                                    //   width: 90,
-                                    //   height: 100,
-                                    //   fit: BoxFit.cover,
-                                    // ),
-                                    Lottie.asset(
-                                      'assets/animations/false.json',
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ],
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: Text("Batal"),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  TextButton(
-                                    child: Text("Ok"),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
+                        // if (_formKey.currentState!.validate()) {
+                        //   // ScaffoldMessenger.of(context).showSnackBar(
+                        //   //   SnackBar(content: Text("Form Validasi Berhasil")),
+                        //   // );
+                        //   context.pushReplacement(TugasDelapan());
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(
+                        //       content: Text("Form Validasi Berhasil"),
+                        //       duration: Duration(microseconds: 2),
+                        //     ),
+                        //   );
+                        // } else {
+                        //   showDialog(
+                        //     context: context,
+                        //     builder: (BuildContext context) {
+                        //       return AlertDialog(
+                        //         title: Text("Login failed"),
+                        //         content: Column(
+                        //           mainAxisSize: MainAxisSize.min,
+                        //           children: [
+                        //             Text("Email or password is invalid"),
+                        //             SizedBox(height: 20),
+                        //             // Image.asset(
+                        //             //   'assets/images/rendang.jpeg',
+                        //             //   width: 90,
+                        //             //   height: 100,
+                        //             //   fit: BoxFit.cover,
+                        //             // ),
+                        //             Lottie.asset(
+                        //               'assets/animations/false.json',
+                        //               width: 100,
+                        //               height: 100,
+                        //               fit: BoxFit.cover,
+                        //             ),
+                        //           ],
+                        //         ),
+                        //         actions: [
+                        //           TextButton(
+                        //             child: Text("Batal"),
+                        //             onPressed: () {
+                        //               Navigator.of(context).pop();
+                        //             },
+                        //           ),
+                        //           TextButton(
+                        //             child: Text("Ok"),
+                        //             onPressed: () {
+                        //               Navigator.of(context).pop();
+                        //             },
+                        //           ),
+                        //         ],
+                        //       );
+                        //     },
+                        //   );
+                        // }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(
@@ -370,7 +400,7 @@ class _MyWidgetState extends State<TugasEnam> {
                           TextSpan(
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                print("Text Rich Tapped");
+                                context.push(RegisterScreen());
                               },
                             text: " Register",
                             style: TextStyle(

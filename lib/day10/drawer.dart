@@ -9,6 +9,8 @@ import 'package:ppkd_flutter_1/day14/list.dart';
 import 'package:ppkd_flutter_1/day14/list_map.dart';
 import 'package:ppkd_flutter_1/day14/model.dart';
 import 'package:ppkd_flutter_1/day15/daftar_kelas.dart';
+import 'package:ppkd_flutter_1/day16/views/pendaftaran_screen.dart';
+import 'package:ppkd_flutter_1/day9/tugas_6.dart';
 // import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
@@ -125,9 +127,23 @@ class _DrawerMenuState extends State<DrawerMenu> {
           ),
           ListTile(
             leading: Icon(Icons.app_registration),
-            title: Text("Pendaftaran Kelas"),
+            title: Text("Formulir"),
             onTap: () {
               context.push(DaftarKelas());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.app_registration),
+            title: Text("Pendaftaran Peserta Kelas"),
+            onTap: () {
+              context.push(PendaftaranScreen());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text("Logout"),
+            onTap: () {
+              context.push(TugasEnam());
             },
           ),
         ],

@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:ppkd_flutter_1/day10/tugas_7.dart';
+import 'package:ppkd_flutter_1/day10/tugas_8.dart';
 import 'package:ppkd_flutter_1/day16/preference/login.dart';
 import 'package:ppkd_flutter_1/day16/sqflite/db_helper.dart';
 import 'package:ppkd_flutter_1/day16/views/register_screen.dart';
@@ -32,7 +32,7 @@ class _MyWidgetState extends State<TugasEnam> {
     final userData = await DbHelper.loginUser(email, password);
     if (userData != null) {
       PreferenceHandler.saveLogin();
-      context.pushReplacementNamed(Home.id);
+      context.pushReplacementNamed(TugasDelapan.id);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Email atau Password salah")),

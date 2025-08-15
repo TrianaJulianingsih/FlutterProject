@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ppkd_flutter_1/day10/drawer.dart';
 import 'package:ppkd_flutter_1/day15/text_form.dart';
 import 'package:ppkd_flutter_1/day16/model/peserta.dart';
 import 'package:ppkd_flutter_1/day16/sqflite/db_helper.dart';
@@ -35,7 +36,11 @@ class _PendaftaranScreenState extends State<PendaftaranScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Pendaftaran Peserta")),
+      appBar: AppBar(
+        title: Text("Pendaftaran Peserta"),
+        backgroundColor: Colors.blue,
+      ),
+      drawer: DrawerMenu(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -53,6 +58,7 @@ class _PendaftaranScreenState extends State<PendaftaranScreen> {
               hintText: "Asal Kota",
               controller: asalKotaController,
             ),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
                 final nama = namaController.text.trim();
@@ -90,20 +96,104 @@ class _PendaftaranScreenState extends State<PendaftaranScreen> {
               },
               child: Text("Simpan Data"),
             ),
+            SizedBox(height: 20),
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: participants.length,
               itemBuilder: (BuildContext context, int index) {
-                final dataUserLogin = participants[index];
-                return ListTile(
-                  title: Text(dataUserLogin.nama),
-                  subtitle: Column(
-                    children: [
-                      Text(dataUserLogin.email),
-                      Text(dataUserLogin.namaEvent),
-                      Text(dataUserLogin.asalKota),
-                    ],
+                final dataPeserta = participants[index];
+                return Card(
+                  color: const Color.fromARGB(255, 244, 187, 54),
+                  child: ListTile(
+                    title: Text(dataPeserta.nama),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(dataPeserta.email),
+                        Text(dataPeserta.namaEvent),
+                        Text(dataPeserta.asalKota),
+                      ],
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Card(
+                          color: Colors.blue,
+                          child: IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  title: Text('Edit Data'),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      TextFormConst(
+                                        controller: namaController
+                                          ..text = dataPeserta.nama,
+                                        hintText: 'Nama',
+                                      ),
+                                      SizedBox(height: 12),
+                                      TextFormConst(
+                                        controller: emailController
+                                          ..text = dataPeserta.email,
+                                        hintText: 'Email',
+                                      ),
+                                      SizedBox(height: 12),
+                                      TextFormConst(
+                                        controller: namaEventController
+                                          ..text = dataPeserta.namaEvent,
+                                        hintText: 'Nama Event',
+                                      ),
+                                      SizedBox(height: 12),
+                                      TextFormConst(
+                                        controller: asalKotaController
+                                          ..text = dataPeserta.asalKota,
+                                        hintText: 'Asal Kota',
+                                      ),
+                                    ],
+                                  ),
+                                  actions: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        final dataUser = Peserta(
+                                          id: dataPeserta.id!,
+                                          nama: namaController.text,
+                                          email: emailController.text,
+                                          namaEvent: namaEventController.text,
+                                          asalKota: asalKotaController.text
+                                              .trim(),
+                                        );
+                                        DbHelper.updatePeserta(dataUser);
+                                        getUser();
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('Simpan'),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('Batal'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            icon: Icon(Icons.edit, color: Colors.white),
+                          ),
+                        ),
+                        Card(
+                          color: Colors.red,
+                          child: IconButton(
+                            onPressed: () {
+                              DbHelper.deletePeserta(dataPeserta.id!);
+                              getUser();
+                            },
+                            icon: Icon(Icons.delete, color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

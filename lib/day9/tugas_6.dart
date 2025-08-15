@@ -17,7 +17,7 @@ class TugasEnam extends StatefulWidget {
 class _MyWidgetState extends State<TugasEnam> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  // final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   Future<void> login() async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
@@ -47,7 +47,7 @@ class _MyWidgetState extends State<TugasEnam> {
 
       // ),
       body: Form(
-        // key: _formKey,
+        key: _formKey,
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [

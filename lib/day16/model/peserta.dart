@@ -2,11 +2,13 @@ import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class Peserta {
+  final int? id;
   final String nama;
   final String email;
   final String namaEvent;
   final String asalKota;
   Peserta({
+    this.id,
     required this.nama,
     required this.email,
     required this.namaEvent,
@@ -15,6 +17,7 @@ class Peserta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'nama': nama,
       'email': email,
       'nama_event': namaEvent,
@@ -24,6 +27,7 @@ class Peserta {
 
   factory Peserta.fromMap(Map<String, dynamic> map) {
     return Peserta(
+      id: map['id'] as int,
       nama: map['nama'] as String,
       email: map['email'] as String,
       namaEvent: map['nama_event'] as String,

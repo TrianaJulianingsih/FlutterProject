@@ -16,12 +16,6 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-      appBar: AppBar(title: Text("Jikan", style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontFamily: "Gilroy_Regular",
-          ),), centerTitle: true, backgroundColor: Colors.blue),
-=======
       appBar: AppBar(
         title: Text(
           "Jikan",
@@ -33,7 +27,6 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
         backgroundColor: Colors.blue,
         centerTitle: true,
       ),
->>>>>>> 1c355dc (add detail screen)
       drawer: DrawerMenu(),
       body: SingleChildScrollView(
         child: Column(
@@ -52,11 +45,6 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       final dataCharacter = characters[index];
                       return Card(
-<<<<<<< HEAD
-                        color: const Color.fromARGB(123, 53, 178, 255),
-                        child: ListTile(
-                          leading: dataCharacter.trailer?.images?.imageUrl == null
-=======
                         color: Colors.blue.shade100,
                         child: ListTile(
                           onTap: () {
@@ -72,7 +60,6 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
                           },
                           leading:
                               dataCharacter.trailer?.images?.imageUrl == null
->>>>>>> 1c355dc (add detail screen)
                               ? CircleAvatar()
                               : Image.network(
                                   dataCharacter.trailer?.images?.imageUrl ?? "",
@@ -81,18 +68,12 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
                                   },
                                 ),
                           title: Text(dataCharacter.title ?? ""),
-<<<<<<< HEAD
-                          subtitle: Text(
-                            "${dataCharacter.rating} - ${dataCharacter.score}" ??
-                                "",
-=======
                           subtitle: Row(
                             children: [
                               Text("${dataCharacter.rating} " ?? ""),
                               Icon(Icons.star, color: Colors.amber),
                               Text("${dataCharacter.score}" ?? ""),
                             ],
->>>>>>> 1c355dc (add detail screen)
                           ),
                         ),
                       );

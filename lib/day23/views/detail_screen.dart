@@ -86,7 +86,7 @@ class DetailScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          TextSpan(text: (anime.score ?? 0).toStringAsFixed(1)),
+                          TextSpan(text: (anime.score ?? 0).toString()),
                         ],
                       ),
                     ),

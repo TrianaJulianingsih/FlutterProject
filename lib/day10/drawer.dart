@@ -141,7 +141,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.app_registration),
+            leading: Icon(Icons.api),
             title: Text("API"),
             onTap: () {
               context.push(GetCharacterScreen());

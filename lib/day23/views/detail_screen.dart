@@ -32,7 +32,7 @@ class DetailScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(
-                            anime.trailer?.images?.imageUrl ?? "",
+                            anime.trailer?.images?.mediumImageUrl ?? "",
                           ),
                           fit: BoxFit.fill,
                         ),

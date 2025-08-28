@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 import 'package:ppkd_flutter_1/day16/preference/login.dart';
 import 'package:ppkd_flutter_1/day16/utils/app_image.dart';
-import 'package:ppkd_flutter_1/day9/tugas_6.dart';
+import 'package:ppkd_flutter_1/day25/views/login_api_screen.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (isLogin == true) {
         context.pushReplacementNamed(Home.id);
       } else {
-        context.push(TugasEnam());
+        context.push(LoginScreen());
       }
     });
   }

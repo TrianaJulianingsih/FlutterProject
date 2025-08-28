@@ -4,6 +4,9 @@ import 'package:ppkd_flutter_1/day10/tugas_8.dart';
 import 'package:ppkd_flutter_1/day16/preference/login.dart';
 import 'package:ppkd_flutter_1/day16/sqflite/db_helper.dart';
 import 'package:ppkd_flutter_1/day16/views/register_screen.dart';
+import 'package:ppkd_flutter_1/day25/api/register_user.dart';
+import 'package:ppkd_flutter_1/day25/models/register_model.dart';
+import 'package:ppkd_flutter_1/day25/views/post_api_screen.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,27 +21,63 @@ class _MyWidgetState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  Future<void> login() async {
+  RegisterUserModel? user;
+  String? errorMessage;
+  bool isVisibility = false;
+  bool isLoading = false;
+  void loginUser() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Email dan Password tidak boleh kosong")),
+        const SnackBar(
+          content: Text("Email, dan Password tidak boleh kosong"),
+        ),
       );
-      // isLoading = false;
+      isLoading = false;
 
       return;
     }
-    final userData = await DbHelper.loginUser(email, password);
-    if (userData != null) {
-      PreferenceHandler.saveLogin();
-      context.pushReplacementNamed(TugasDelapan.id);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Email atau Password salah")),
+    try {
+      final result = await AuthenticationAPI.loginUser(
+        email: email,
+        password: password,
       );
+      setState(() {
+        user = result;
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Login berhasil")));
+      PreferenceHandler.saveToken(user?.data?.token.toString() ?? "");
+      context.pushReplacementNamed(TugasDelapan.id);
+      print(user?.toJson());
+    } catch (e) {
+      print(e);
+      setState(() {
+        errorMessage = e.toString();
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(errorMessage.toString())));
+    } finally {
+      setState(() {});
+      isLoading = false;
     }
+    // final user = User(email: email, password: password, name: name);
+    // await DbHelper.registerUser(user);
+    // Future.delayed(const Duration(seconds: 1)).then((value) {
+    //   isLoading = false;
+    //   ScaffoldMessenger.of(
+    //     context,
+    //   ).showSnackBar(const SnackBar(content: Text("Pendaftaran berhasil")));
+    // });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -139,16 +178,16 @@ class _MyWidgetState extends State<LoginScreen> {
                             ),
                             border: InputBorder.none,
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Email tidak boleh kosong";
-                            } else if (!value.contains("@")) {
-                              return "Email tidak valid";
-                            } else if (RegExp(r'^\d').hasMatch(value)) {
-                              return "Email tidak valid";
-                            }
-                            return null;
-                          },
+                          // validator: (value) {
+                          //   if (value == null || value.isEmpty) {
+                          //     return "Email tidak boleh kosong";
+                          //   } else if (!value.contains("@")) {
+                          //     return "Email tidak valid";
+                          //   } else if (RegExp(r'^\d').hasMatch(value)) {
+                          //     return "Email tidak valid";
+                          //   }
+                          //   return null;
+                          // },
                         ),
                         Divider(
                           indent: 15,
@@ -178,14 +217,14 @@ class _MyWidgetState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Password tidak boleh kosong";
-                            } else if (RegExp(r'^\d').hasMatch(value)) {
-                              return "Password tidak valid";
-                            }
-                            return null;
-                          },
+                          // validator: (value) {
+                          //   if (value == null || value.isEmpty) {
+                          //     return "Password tidak boleh kosong";
+                          //   } else if (RegExp(r'^\d').hasMatch(value)) {
+                          //     return "Password tidak valid";
+                          //   }
+                          //   return null;
+                          // },
                         ),
                       ],
                     ),
@@ -208,7 +247,7 @@ class _MyWidgetState extends State<LoginScreen> {
                     width: 327,
                     child: ElevatedButton(
                       onPressed: () {
-                        login();
+                        loginUser();
                         //Error dan sukses menggunakan ScaffoldMessenger dan formKey
                         // if (_formKey.currentState!.validate()) {
                         //   // ScaffoldMessenger.of(context).showSnackBar(
@@ -400,7 +439,7 @@ class _MyWidgetState extends State<LoginScreen> {
                           TextSpan(
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                context.push(RegisterScreen());
+                                context.push(PostApiScreen());
                               },
                             text: " Register",
                             style: TextStyle(

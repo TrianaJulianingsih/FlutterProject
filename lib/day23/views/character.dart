@@ -4,6 +4,7 @@ import 'package:ppkd_flutter_1/day10/drawer.dart';
 import 'package:ppkd_flutter_1/day23/api/get_character.dart';
 import 'package:ppkd_flutter_1/day23/models/character_model.dart';
 import 'package:ppkd_flutter_1/day23/views/detail_screen.dart';
+import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class GetCharacterScreen extends StatefulWidget {
   const GetCharacterScreen({super.key});
@@ -16,17 +17,10 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Jikan",
-          style: TextStyle(
+      appBar: AppBar(title: Text("Jikan", style: TextStyle(
             fontWeight: FontWeight.bold,
             fontFamily: "Gilroy_Regular",
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-      ),
+          ),), centerTitle: true, backgroundColor: Colors.blue),
       drawer: DrawerMenu(),
       body: SingleChildScrollView(
         child: Column(
@@ -45,10 +39,18 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       final dataCharacter = characters[index];
                       return Card(
-                        color: Colors.blue.shade100,
+                        color: const Color.fromARGB(123, 53, 178, 255),
                         child: ListTile(
-                          onTap: () {
-                            Navigator.push(
+                          leading: dataCharacter.trailer?.images?.imageUrl == null
+                              ? CircleAvatar()
+                              : Image.network(
+                                  dataCharacter.trailer?.images?.imageUrl ?? "",
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return CircleAvatar();
+                                  },
+                                ),
+                              onTap: () {
+                                Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => DetailScreen(
@@ -57,23 +59,11 @@ class _GetCharacterScreenState extends State<GetCharacterScreen> {
                                 ),
                               ),
                             );
-                          },
-                          leading:
-                              dataCharacter.trailer?.images?.imageUrl == null
-                              ? CircleAvatar()
-                              : Image.network(
-                                  dataCharacter.trailer?.images?.imageUrl ?? "",
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return CircleAvatar();
-                                  },
-                                ),
+                              },
                           title: Text(dataCharacter.title ?? ""),
-                          subtitle: Row(
-                            children: [
-                              Text("${dataCharacter.rating} " ?? ""),
-                              Icon(Icons.star, color: Colors.amber),
-                              Text("${dataCharacter.score}" ?? ""),
-                            ],
+                          subtitle: Text(
+                            "${dataCharacter.rating} - ${dataCharacter.score}" ??
+                                "",
                           ),
                         ),
                       );

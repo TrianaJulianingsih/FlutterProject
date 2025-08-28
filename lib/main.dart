@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ppkd_flutter_1/day10/tugas_7.dart';
 import 'package:ppkd_flutter_1/day10/tugas_8.dart';
 import 'package:ppkd_flutter_1/day16/views/splash_screen.dart';
+import 'package:ppkd_flutter_1/day23/views/detail_screen.dart';
+import 'package:ppkd_flutter_1/day25/views/login_api_screen.dart';
 import 'package:ppkd_flutter_1/day9/tugas_6.dart';
 // import 'package:ppkd_flutter_1/day14/tugas_9.dart';
 
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SplashScreen(),
+      home: LoginScreen(),
       routes: {
         // '/': (context) => const Start(),
         // '/tugas2': (context) => const TugasDua(),
@@ -54,7 +56,7 @@ class MyApp extends StatelessWidget {
         // '/home': (context) => const Home(),
         Home.id: (context) => Home(),
         TugasDelapan.id: (context) => TugasDelapan(),
-        TugasEnam.id: (context) => TugasEnam(),
+        LoginScreen.id: (context) => LoginScreen(),
         // '/tugasDelapan': (context) => const TugasDelapan(),
         // '/login': (context) => const TugasEnam(),
         // '/cobaFlutter': (context) => const TugasEnam(),

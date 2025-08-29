@@ -193,19 +193,11 @@ class _PostApiScreenState extends State<PostApiScreen> {
                   ),
                   onPressed: () {
                     // Navigate to MeetLima screen menggunakan pushnamed
-                    Navigator.pushNamed(context, "/meet_2");
+                    Navigator.pushNamed(context, "/loginapi");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/icon_google.png",
-                        height: 16,
-                        width: 16,
-                      ),
-                      width(4),
-                      Text("Google"),
-                    ],
+                    children: [width(4), Text("Login")],
                   ),
                 ),
               ),

@@ -1,17 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:ppkd_flutter_1/day10/tugas_8.dart';
 import 'package:ppkd_flutter_1/day16/preference/login.dart';
-import 'package:ppkd_flutter_1/day16/sqflite/db_helper.dart';
-import 'package:ppkd_flutter_1/day16/views/register_screen.dart';
 import 'package:ppkd_flutter_1/day25/api/register_user.dart';
 import 'package:ppkd_flutter_1/day25/models/register_model.dart';
+import 'package:ppkd_flutter_1/day25/views/buttomNav.dart';
 import 'package:ppkd_flutter_1/day25/views/post_api_screen.dart';
 import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-  static const id = "/login";
+  static const id = "/loginapi";
 
   @override
   State<LoginScreen> createState() => _MyWidgetState();
@@ -34,9 +32,7 @@ class _MyWidgetState extends State<LoginScreen> {
     final password = passwordController.text.trim();
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Email, dan Password tidak boleh kosong"),
-        ),
+        const SnackBar(content: Text("Email, dan Password tidak boleh kosong")),
       );
       isLoading = false;
 
@@ -54,7 +50,7 @@ class _MyWidgetState extends State<LoginScreen> {
         context,
       ).showSnackBar(const SnackBar(content: Text("Login berhasil")));
       PreferenceHandler.saveToken(user?.data?.token.toString() ?? "");
-      context.pushReplacementNamed(TugasDelapan.id);
+      context.pushReplacementNamed(ButtomNav.id);
       print(user?.toJson());
     } catch (e) {
       print(e);
@@ -77,7 +73,6 @@ class _MyWidgetState extends State<LoginScreen> {
     //   ).showSnackBar(const SnackBar(content: Text("Pendaftaran berhasil")));
     // });
   }
-
 
   @override
   Widget build(BuildContext context) {

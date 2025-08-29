@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:ppkd_flutter_1/day10/tugas_7.dart';
-import 'package:ppkd_flutter_1/day10/tugas_8.dart';
-import 'package:ppkd_flutter_1/day16/views/splash_screen.dart';
-import 'package:ppkd_flutter_1/day23/views/detail_screen.dart';
+import 'package:ppkd_flutter_1/day25/views/buttomNav.dart';
+import 'package:ppkd_flutter_1/day25/views/home.dart';
 import 'package:ppkd_flutter_1/day25/views/login_api_screen.dart';
-import 'package:ppkd_flutter_1/day9/tugas_6.dart';
+import 'package:ppkd_flutter_1/day25/views/profile.dart';
 // import 'package:ppkd_flutter_1/day14/tugas_9.dart';
 
 // import 'package:ppkd_flutter_1/coba/cobaFlutter.dart';
@@ -54,9 +52,13 @@ class MyApp extends StatelessWidget {
         // '/tugas4': (context) => const TugasEmpat(),
         // '/tugas5': (context) => const TugasLima(),
         // '/home': (context) => const Home(),
-        Home.id: (context) => Home(),
-        TugasDelapan.id: (context) => TugasDelapan(),
+        // Home.id: (context) => Home(),
+        // TugasDelapan.id: (context) => TugasDelapan(),
         LoginScreen.id: (context) => LoginScreen(),
+        ProfileAPIScreen.id: (context) => ProfileAPIScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
+        ButtomNav.id: (context) => ButtomNav(),
+
         // '/tugasDelapan': (context) => const TugasDelapan(),
         // '/login': (context) => const TugasEnam(),
         // '/cobaFlutter': (context) => const TugasEnam(),

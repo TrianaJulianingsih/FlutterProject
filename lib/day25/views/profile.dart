@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_flutter_1/day25/api/register_user.dart';
 import 'package:ppkd_flutter_1/day25/models/get_user_model.dart';
+import 'package:ppkd_flutter_1/day25/views/login_api_screen.dart';
+import 'package:ppkd_flutter_1/extension/navigation.dart';
 
 class ProfileAPIScreen extends StatefulWidget {
   const ProfileAPIScreen({super.key});
@@ -184,7 +186,12 @@ class _ProfileAPIScreenState extends State<ProfileAPIScreen> {
                 ],
               ),
             ),
-            ElevatedButton(onPressed: () {}, child: Text("Logout")),
+            ElevatedButton(
+              onPressed: () {
+                context.pushReplacement(LoginScreen());
+              },
+              child: Text("Logout"),
+            ),
           ],
         ),
       ),

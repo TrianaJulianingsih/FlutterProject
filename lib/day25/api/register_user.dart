@@ -44,20 +44,24 @@ class AuthenticationAPI {
     }
   }
 
-  static Future<GetUserModel> updateUser({required String name}) async {
+  static Future<GetUserModel> updateUser({
+    required String name,
+    required String email,
+  }) async {
     final url = Uri.parse(Endpoint.profile);
     final token = await PreferenceHandler.getToken();
 
-    final response = await http.post(
+    final response = await http.put(
       url,
-      body: {"name": name},
+      body: {"name": name, "email": email},
       headers: {"Accept": "application/json", "Authorization": "Bearer $token"},
     );
+
     if (response.statusCode == 200) {
       return GetUserModel.fromJson(json.decode(response.body));
     } else {
       final error = json.decode(response.body);
-      throw Exception(error["message"] ?? "Register gagal");
+      throw Exception(error["message"] ?? "Update profile gagal");
     }
   }
 
